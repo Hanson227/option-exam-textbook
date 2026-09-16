@@ -80,6 +80,12 @@ th{background:var(--surface2);font-weight:600}
 .cta-practice{background:var(--accent)}
 .cta-exam{background:var(--warn)}
 .cta-cards{background:var(--brand)}
+/* 首页"继续上次" */
+.home-resume{margin:-4px 0 16px}
+.home-resume button{width:100%;border:1px solid var(--brand2);border-radius:var(--radius);padding:13px;
+  font-size:15px;font-weight:600;color:var(--brand);background:var(--surface2);cursor:pointer;text-align:center}
+/* 题目卡片底部的"重做"条 */
+.q-bar{margin-top:8px}
 /* 目录 */
 .toc-item{display:flex;align-items:center;gap:10px;padding:11px 8px;border-bottom:1px solid var(--border);cursor:pointer}
 .toc-item .num{width:28px;height:28px;border-radius:50%;background:var(--brand2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:0 0 auto}
@@ -217,7 +223,8 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
     <div class="card" style="text-align:center;padding:28px 16px">
       <h1 class="doc-title">期权交易知识通关教材</h1>
       <p class="doc-sub">零基础入门 · 205 道模拟题全覆盖 · 修订版</p>
-      <p style="color:var(--muted);font-size:14px">手机 / 电脑均可阅读，双击即可打开 · 数据保存在本机浏览器</p>
+      <p style="color:var(--muted);font-size:14px">手机 / 电脑均可阅读，双击即可打开 · 进度自动存在本机浏览器</p>
+      <p style="color:var(--muted);font-size:13px">读到哪、做到第几题、错题本都会自动记住，下次打开接着来。</p>
       <p class="credit">✍️ 制作整理 · <b>Hanson</b></p>
     </div>
     <div class="home-cta">
@@ -226,6 +233,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
       <button class="cta-exam" data-v="exam">🎯 模拟考试（20 题全对通过）</button>
       <button class="cta-cards" data-v="cards">📇 速查卡 / 术语表</button>
     </div>
+    <div id="home-resume" class="home-resume"></div>
     <div class="card">
       <h3>全书结构（8 章 · 205 题）</h3>
       <p style="margin:4px 0;font-size:14px"><b>1. 第一章 期权基础知识</b></p> <p style="margin:4px 0;font-size:14px"><b>2. 第二章 期权交易规则</b></p> <p style="margin:4px 0;font-size:14px"><b>3. 第三章 期权定价与影响因素</b></p> <p style="margin:4px 0;font-size:14px"><b>4. 第四章 买入开仓策略</b></p> <p style="margin:4px 0;font-size:14px"><b>5. 第五章 卖出开仓策略</b></p> <p style="margin:4px 0;font-size:14px"><b>6. 第六章 备兑开仓与保险策略</b></p> <p style="margin:4px 0;font-size:14px"><b>7. 第七章 组合策略</b></p> <p style="margin:4px 0;font-size:14px"><b>8. 第八章 风控制度</b></p>
@@ -283,7 +291,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <tr><td>小张</td><td>期权买方（权利方）</td></tr>
 <tr><td>房东</td><td>期权卖方（义务方）</td></tr>
 </table></div>
-<h3>期权的正式定义：期权合约是由买方向卖方支付权利金，从而获得在未来约定的时间、以约定的价格（行权价）买入或卖出标的资产的权利。（对应题库第49、151题）</h3>
+<h3>期权的正式定义：买方先付出一笔权利金，换取一项权利——在将来约定的时间，按约定的价格（行权价）买入或卖出标的资产。这份权利白纸黑字写进标准合约，就是期权合约。（对应题库第49、151题）</h3>
 <h2>1.2 买方与卖方：买保险的人 vs 保险公司</h2>
 <p class="lead">生活化比喻：保险</p>
 <p class="lead">你花500元给手机买了碎屏险。保险公司收了钱，就承担了义务：屏碎了你索赔，它必须赔。你有权索赔也可以不索赔，但保险公司只有义务、没有权利选择赔不赔。</p>
@@ -341,7 +349,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <tr><td>标的资产</td><td>合约对应的底层证券</td><td>上交所期权的标的是股票或ETF（如50ETF）</td></tr>
 <tr><td>合约类型</td><td>认购（C）或认沽（P）</td><td>—</td></tr>
 <tr><td>合约单位</td><td>单张合约对应的标的证券数量</td><td>50ETF期权的合约单位是10000份</td></tr>
-<tr><td>行权价格</td><td>约定的履约价格，又称履约价格</td><td>2.350元</td></tr>
+<tr><td>行权价格</td><td>买方到期买卖标的证券的约定价格（又称履约价格）</td><td>2.350元</td></tr>
 <tr><td>到期日</td><td>合约失效的日期</td><td>到期月份第四个星期三</td></tr>
 <tr><td>交割方式</td><td>履约时的结算方式</td><td>上交所为实物交割（真的交付证券）</td></tr>
 </table></div>
@@ -351,11 +359,14 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">C：认购期权（P表示认沽）；</p>
 <p class="body">1509：到期年月（2015年9月）；</p>
 <p class="body">M：合约未调整过（调整过则变为A、B……）；</p>
-<p class="body">02350：行权价2.350元（后三位是小数）。</p>
+<p class="body">02350：行权价 2.350 元（末尾三位是小数部分）。</p>
 <p class="body">（对应题库第88题）</p>
 <h2>1.5 实值、平值、虚值：现在行权划不划算？</h2>
 <p class="lead">生活化比喻：优惠券值不值钱</p>
-<p class="lead">你有一张”满100减20”的券。 - 如果商品市价120元，你用券100元就能买到——券是实值的，立刻省20元； - 如果商品市价正好100元，用券没差别——平值； - 如果商品市价只有90元，用券反而要花100元——券是虚值的，现在用不上。</p>
+<p class="lead">你有一张”满100减20”的券，也就是能用100元买下它。接下来只看商品的价格：</p>
+<p class="body">商品市价120元：用券100元就能买到，立刻省下20元——这张券是实值的；</p>
+<p class="body">商品市价正好100元：用不用券一个价——平值；</p>
+<p class="body">商品市价只有90元：用券反而要花100元，不如直接买——这张券是虚值的，现在用不上。</p>
 <p class="body">把”用券价”换成”行权价”：</p>
 <div class="table-wrap"><table>
 <tr><th></th><th>认购期权</th><th>认沽期权</th></tr>
@@ -392,8 +403,10 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">认购期权内在价值 = max(标的价格 − 行权价, 0)</p>
 <p class="body">认沽期权内在价值 = max(行权价 − 标的价格, 0)</p>
 <p class="body">内在价值不可能为负——虚值和平值期权的内在价值都是0。</p>
-<p class="body">时间价值：权利金中超出内在价值的部分，是”还没到期，未来可能变实值”的希望的价格。虚值期权只有时间价值。</p>
-<p class="lead">计算示例（题库第138题）：甲股票现价42元，行权价40元的认购期权权利金5元。 - 内在价值 = 42 − 40 = 2元； - 时间价值 = 5 − 2 = 3元。</p>
+<p class="body">时间价值：权利金里超出内在价值的那部分。说白了，就是为”还没到期、将来还有机会变成实值”这份期待所付的钱。虚值期权没有内在价值，权利金全是时间价值。</p>
+<p class="lead">计算示例（题库第138题）：甲股票现价42元，行权价40元的认购期权权利金5元。</p>
+<p class="body">第一步，内在价值 = 42 − 40 = 2元；</p>
+<p class="body">第二步，时间价值 = 5 − 2 = 3元。</p>
 <p class="lead">易错点（题库第11题）：乙股票现价23元，行权价25元的认购期权是虚值，内在价值不是 −2，而是 0（内在价值没有负数）。</p>
 <p class="body">（对应题库第56、190题）</p>
 <h2>1.7 期权与期货、权证的区别</h2>
@@ -565,7 +578,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 </table></div>
 <p class="lead">记忆口诀：开盘集合竞价”15到25”，收盘集合竞价”57到整点”。（对应题库第6、153题）</p>
 <p class="body">委托数量限制：市价委托单笔申报最大数量为 10张；限价委托单笔申报最大数量更大。（题库第181题）</p>
-<h3>交易机制：上交所期权采用竞价交易与做市商相结合的混合交易制度——既有投资者之间的撮合竞价，也有做市商持续提供买卖报价、保证流动性。（题库第90题）</h3>
+<h3>交易机制：上交所期权实行”竞价 + 做市商”的混合交易制度——投资者之间可以像买卖股票那样互相撮合成交，同时还有做市商不断报出买价和卖价，保证随时都有人接单。（题库第90题）</h3>
 <h2>2.2 断路器（熔断）制度</h2>
 <p class="body">生活化比喻：保险丝</p>
 <h3>电路电流过大时保险丝会熔断，防止烧毁电器。期权价格盘中波动过大时，“断路器”会触发：暂停连续竞价，进入一段时间的集合竞价，让市场冷静后再恢复。</h3>
@@ -754,7 +767,9 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">内在价值不可能为负数——虚值期权内在价值就是0。</p>
 <p class="body">时间价值的计算：</p>
 <h3>时间价值 = 权利金 − 内在价值</h3>
-<p class="lead">计算示例（题库第138题）：甲股票现价42元，行权价40元的认购期权权利金5元。 - 第一步：内在价值 = max(42 − 40, 0) = 2元； - 第二步：时间价值 = 5 − 2 = 3元。</p>
+<p class="lead">计算示例（题库第138题）：甲股票现价42元，行权价40元的认购期权权利金5元。</p>
+<p class="body">第一步：内在价值 = max(42 − 40, 0) = 2元；</p>
+<p class="body">第二步：时间价值 = 5 − 2 = 3元。</p>
 <p class="body">结论：</p>
 <p class="body">实值期权：内在价值 &gt; 0，同时含有时间价值；</p>
 <p class="body">平值期权：内在价值 = 0，全部是时间价值；</p>
@@ -787,7 +802,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">认购期权Delta在 0到1之间（实值接近1，虚值接近0，平值约0.5）；</p>
 <p class="body">认沽期权Delta在 −1到0之间；</p>
 <p class="body">实值期权临近到期，Delta会增大（向1靠拢）。</p>
-<p class="lead">计算示例（题库第80题）：某认购期权一个月前Delta为0.7，随着到期日临近（实值）Delta增大，那么现在标的上涨1元，期权价格变化为：大于0.7元且小于1元（因为Delta仍然&lt;1）。</p>
+<p class="lead">计算示例（题库第80题）：某认购期权一个月前 Delta 为 0.7；如今临近到期，实值程度加深，Delta 随之变大。这时标的价格上涨 1 元，期权价格的涨幅一定大于 0.7 元、但不到 1 元——因为 Delta 变大后仍然小于 1。</p>
 <p class="body">Theta要点（题库第107题）：</p>
 <p class="body">买方Theta为负：时间每流逝一天，期权价值就损耗一点；</p>
 <p class="body">临近到期，时间价值加速衰减（下图）；</p>
@@ -805,14 +820,17 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 </svg><figcaption>时间价值衰减</figcaption></figure>
 <h3>Vega要点（题库第41、130题）：</h3>
 <p class="body">平值期权的Vega最大——平值期权对波动率最敏感（它”可实可虚”，悬念最大）；</p>
-<p class="body">Vega为1.5，波动率上升1%，期权价格约上升 1.5%（按题库的简化口径）。</p>
+<p class="body">举例来说：Vega = 1.5，意思是波动率每上升 1%，期权价格大约跟着涨 1.5%（这是题库便于计算的简化口径，应试按此处理即可）。</p>
 <h2>3.4 认购-认沽平价公式</h2>
 <p class="body">平价公式（Put-Call Parity）：</p>
 <h3>c + PV(K) = p + S</h3>
 <h3>其中：c=认购期权权利金，p=认沽期权权利金，S=标的价格，PV(K)=行权价的现值。</h3>
 <h3>成立条件：认购和认沽期权必须满足——相同标的、相同行权价、相同到期日（权利金不需要相同！题库第131题）。</h3>
-<h3>生活化理解：等式左边”买一份认购 + 存一笔够行权的钱”，等式右边”买一份认沽 + 买一份标的”，两边到期效果完全一样（最终都是一份标的），所以现在价值必须相等，否则就有人无风险套利。</h3>
-<p class="lead">计算示例（题库第82题）：标的现价50元，行权价45元、1个月到期的认购期权价格6元，利率为0（此时PV(K)=45元），求同行权价同到期日的认沽期权价格。 - 第一步：写出平价公式 c + PV(K) = p + S； - 第二步：代入 6 + 45 = p + 50； - 第三步：解得 p = 1元。</p>
+<h3>生活化理解：等式左边是”买一份认购 + 存一笔够行权的钱”，等式右边是”买一份认沽 + 买一份标的”。无论价格怎么走，两边到期的结果都一模一样，等于同一件东西的两种买法，所以现在花的钱也必须一样。一旦两边价格不等（一边贵一边便宜），就会有人两头倒手、稳赚差价——这种白捡的便宜，市场不会让它长期存在。</h3>
+<p class="lead">计算示例（题库第82题）：标的现价50元，行权价45元、1个月到期的认购期权价格6元，利率为0（此时PV(K)=45元），求同行权价同到期日的认沽期权价格。</p>
+<p class="body">第一步：写出平价公式 c + PV(K) = p + S；</p>
+<p class="body">第二步：代入 6 + 45 = p + 50；</p>
+<p class="body">第三步：解得 p = 1元。</p>
 <p class="body">推论（题库第81题）：c − p = S − PV(K)。利率越高，PV(K)越小，S − PV(K)越大，认购与认沽的价格差越大。</p>
 <h2>3.5 期权的杠杆效应</h2>
 <p class="body">生活化比喻：用定金撬动一套房</p>
@@ -968,7 +986,10 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">盈亏平衡点：行权价 + 权利金。</p>
 <figure class="chart"><svg viewBox="0 0 660 380" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"><title>买入认购期权到期损益（K=50，权利金 5 元）</title><text x="56" y="26" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">买入认购期权到期损益（K=50，权利金 5 元）</text><line x1="56" y1="260.5" x2="610" y2="260.5" stroke="#888780" stroke-width="1" stroke-dasharray="4,4"/><line x1="56" y1="40" x2="56" y2="334" stroke="#D3D1C7" stroke-width="1"/><line x1="56" y1="334" x2="610" y2="334" stroke="#D3D1C7" stroke-width="1"/><text x="56.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="50" y="44.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">30.0</text><text x="194.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="50" y="117.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="333.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">40.0</text><text x="50" y="191.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">10.0</text><text x="471.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">60.0</text><text x="50" y="264.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="610.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">80.0</text><text x="50" y="338.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-10.0</text><path d="M 56.0,297.25 L 402.25,297.25 L 436.875,260.5 L 610.0,76.75" fill="none" stroke="#378ADD" stroke-width="2"/><text x="608" y="72.75" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#378ADD">买入认购</text><circle cx="436.875" cy="260.5" r="4" fill="#EF9F27"/><text x="436.875" y="250.5" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 55</text><text x="80" y="220" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#639922">最大亏损 = 权利金 5 元</text><text x="470" y="60" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#E24B4A">收益随股价上涨</text></svg><figcaption>买入认购损益图</figcaption></figure>
 <h3>到期盈亏计算（分步演示，题库第68题）：</h3>
-<p class="lead">买入行权价50元的认购期权，支付权利金1元，到期标的涨到60元，求每股收益。 - 第一步：判断是否行权。60 &gt; 50，实值，行权划算； - 第二步：行权收益 = 60 − 50 = 10元/股； - 第三步：净收益 = 行权收益 − 权利金 = 10 − 1 = 9元/股。</p>
+<p class="lead">买入行权价50元的认购期权，支付权利金1元，到期标的涨到60元，求每股收益。</p>
+<p class="body">第一步：判断是否行权。60 &gt; 50，实值，行权划算；</p>
+<p class="body">第二步：行权收益 = 60 − 50 = 10元/股；</p>
+<p class="body">第三步：净收益 = 行权收益 − 权利金 = 10 − 1 = 9元/股。</p>
 <p class="body">到期盈亏公式：认购买方每股盈亏 = max(到期价 − 行权价, 0) − 权利金</p>
 <h3>虚值认购的预期（题库第143题）：买入虚值认购期权，意味着预期标的将大幅上涨（只有大涨才能让虚值变实值）。</h3>
 <h3>行权决策（题库第27、122题）：</h3>
@@ -988,16 +1009,23 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">盈亏平衡点：行权价 − 权利金。</p>
 <figure class="chart"><svg viewBox="0 0 660 380" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"><title>买入认沽期权到期损益（K=50，权利金 5 元）</title><text x="56" y="26" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">买入认沽期权到期损益（K=50，权利金 5 元）</text><line x1="56" y1="285.0" x2="610" y2="285.0" stroke="#888780" stroke-width="1" stroke-dasharray="4,4"/><line x1="56" y1="40" x2="56" y2="334" stroke="#D3D1C7" stroke-width="1"/><line x1="56" y1="334" x2="610" y2="334" stroke="#D3D1C7" stroke-width="1"/><text x="56.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="50" y="44.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">50.0</text><text x="194.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="50" y="117.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">35.0</text><text x="333.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">40.0</text><text x="50" y="191.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="471.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">60.0</text><text x="50" y="264.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">5.0</text><text x="610.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">80.0</text><text x="50" y="338.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-10.0</text><path d="M 56.0,64.5 L 367.625,285.0 L 402.25,309.5 L 610.0,309.5" fill="none" stroke="#378ADD" stroke-width="2"/><text x="608" y="305.5" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#378ADD">买入认沽</text><circle cx="367.625" cy="285.0" r="4" fill="#EF9F27"/><text x="367.625" y="275.0" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 45</text><text x="60" y="70" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#E24B4A">最大收益 = K − 权利金（股价跌到 0 时）</text><text x="420" y="240" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#639922">最大亏损 = 权利金 5 元</text></svg><figcaption>买入认沽损益图</figcaption></figure>
 <h3>到期盈亏计算（分步演示，题库第69题）：</h3>
-<p class="lead">刘女士以0.8元/股买入行权价20元的认沽期权（合约单位10000股），到期股价16元，求盈亏。 - 第一步：16 &lt; 20，实值，行权； - 第二步：每股行权收益 = 20 − 16 = 4元； - 第三步：每股净收益 = 4 − 0.8 = 3.2元； - 第四步：总盈亏 = 3.2 × 10000 = 盈利32000元。</p>
+<p class="lead">刘女士以0.8元/股买入行权价20元的认沽期权（合约单位10000股），到期股价16元，求盈亏。</p>
+<p class="body">第一步：16 &lt; 20，实值，行权；</p>
+<p class="body">第二步：每股行权收益 = 20 − 16 = 4元；</p>
+<p class="body">第三步：每股净收益 = 4 − 0.8 = 3.2元；</p>
+<p class="body">第四步：总盈亏 = 3.2 × 10000 = 盈利32000元。</p>
 <p class="body">虚值认沽的预期（题库第66题）：买入虚值认沽，意味着预期标的将大幅下跌。</p>
 <h3>行权决策（题库第159题）：行权价9元的认沽期权到期时股价8.8元——实值，应行权，按9元卖出股票（比市价8.8元多卖0.2元）。</h3>
 <h3>到期不行权的后果（题库第26题）：实值期权到期不行权，期权到期后价值变为零——白白丢掉内在价值！所以实值期权一定要记得行权或提前平仓。</h3>
 <h2>4.3 平仓盈亏计算：不用等到到期</h2>
 <p class="body">期权不一定要持有到期，中途可以卖出平仓了结权利仓。</p>
 <h3>平仓盈亏公式：平仓盈亏 = (卖出价 − 买入价) × 合约单位</h3>
-<p class="lead">计算示例1（题库第30题）：丁先生3.1元买入一张认沽期权，现价1.8元平仓，合约单位10000股。 - 盈亏 = (1.8 − 3.1) × 10000 = −13000元（亏损13000元）。</p>
-<p class="lead">计算示例2（题库第71题）：于先生0.03元买入认沽期权，现价0.06元平仓，合约单位10000。 - 盈亏 = (0.06 − 0.03) × 10000 = +300元。</p>
-<p class="lead">计算示例3（题库第124题）：冯先生0.22元买入认购期权，权利金跌到0.19元平仓，合约单位10000。 - 盈亏 = (0.19 − 0.22) × 10000 = −300元。</p>
+<p class="lead">计算示例1（题库第30题）：丁先生3.1元买入一张认沽期权，现价1.8元平仓，合约单位10000股。</p>
+<p class="body">盈亏 = (1.8 − 3.1) × 10000 = −13000元（亏损13000元）。</p>
+<p class="lead">计算示例2（题库第71题）：于先生0.03元买入认沽期权，现价0.06元平仓，合约单位10000。</p>
+<p class="body">盈亏 = (0.06 − 0.03) × 10000 = +300元。</p>
+<p class="lead">计算示例3（题库第124题）：冯先生0.22元买入认购期权，权利金跌到0.19元平仓，合约单位10000。</p>
+<p class="body">盈亏 = (0.19 − 0.22) × 10000 = −300元。</p>
 <h2>4.4 买入开仓的风险与了结方式</h2>
 <p class="body">买入期权的四类风险（题库第25、121、158题）：</p>
 <p class="body">损失全部权利金的风险（最大风险，也最常被考查）；</p>
@@ -1014,8 +1042,12 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>权利仓概念（题库第64、185题）：买入开仓后，权利仓持仓增加。“开仓”是指增加持仓的交易行为，“平仓”是减少持仓。</h3>
 <h2>4.5 反算盈亏平衡点</h2>
 <p class="body">题库常考”股价到多少能赚X元”的逆向计算，方法是列方程：</p>
-<p class="lead">计算示例（题库第160题）：关先生以0.2元/股买入行权价20元的认购期权（合约单位10000股），问到期股价多少时盈利2000元？ - 第一步：每股需盈利 = 2000 ÷ 10000 = 0.2元； - 第二步：设到期价为S，则 (S − 20) − 0.2 = 0.2； - 第三步：解得 S = 20.4元。</p>
-<p class="lead">计算示例（题库第161题）：以0.2元买入行权价20元的认沽期权（单位10000），盈利2000元时股价为？ - 每股盈利0.2元：(20 − S) − 0.2 = 0.2 → S = 19.6元。</p>
+<p class="lead">计算示例（题库第160题）：关先生以0.2元/股买入行权价20元的认购期权（合约单位10000股），问到期股价多少时盈利2000元？</p>
+<p class="body">第一步：每股需盈利 = 2000 ÷ 10000 = 0.2元；</p>
+<p class="body">第二步：设到期价为S，则 (S − 20) − 0.2 = 0.2；</p>
+<p class="body">第三步：解得 S = 20.4元。</p>
+<p class="lead">计算示例（题库第161题）：以0.2元买入行权价20元的认沽期权（单位10000），盈利2000元时股价为？</p>
+<p class="body">每股盈利0.2元：(20 − S) − 0.2 = 0.2 → S = 19.6元。</p>
 <h2>本章例题精讲</h2>
 <div class="example iq" id="ex22" data-qid="22">
 <div class="ex-tag">【例题1·题库第22题】</div>
@@ -1166,7 +1198,10 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <figure class="chart"><svg viewBox="0 0 660 380" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"><title>卖出认购期权到期损益（K=50，权利金 5 元）</title><text x="56" y="26" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">卖出认购期权到期损益（K=50，权利金 5 元）</text><line x1="56" y1="113.5" x2="610" y2="113.5" stroke="#888780" stroke-width="1" stroke-dasharray="4,4"/><line x1="56" y1="40" x2="56" y2="334" stroke="#D3D1C7" stroke-width="1"/><line x1="56" y1="334" x2="610" y2="334" stroke="#D3D1C7" stroke-width="1"/><text x="56.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="50" y="44.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">10.0</text><text x="194.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="50" y="117.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="333.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">40.0</text><text x="50" y="191.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-10.0</text><text x="471.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">60.0</text><text x="50" y="264.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-20.0</text><text x="610.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">80.0</text><text x="50" y="338.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-30.0</text><path d="M 56.0,76.75 L 402.25,76.75 L 436.875,113.5 L 610.0,297.25" fill="none" stroke="#378ADD" stroke-width="2"/><text x="608" y="293.25" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#378ADD">卖出认购</text><circle cx="436.875" cy="113.5" r="4" fill="#EF9F27"/><text x="436.875" y="103.5" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 55</text><text x="80" y="80" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#E24B4A">最大收益 = 权利金 5 元</text><text x="470" y="230" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#639922">股价上涨亏损（理论上无限）</text></svg><figcaption>卖出认购损益图</figcaption></figure>
 <h3>行权价选择与风险（题库第33题）：卖出认购时，行权价越高，风险越小——行权价越高，被行权的概率越低，权利金也越少，风险与收益同步降低。</h3>
 <h3>到期盈亏计算（分步演示，题库第38题）：</h3>
-<p class="lead">卖出行权价85元的认购期权，收权利金2元，到期股价90元，求盈亏。 - 第一步：判断是否被行权。90 &gt; 85，买方会行权； - 第二步：卖方履约亏损 = 90 − 85 = 5元/股（要按85元卖出市价90元的股票）； - 第三步：净盈亏 = 权利金 − 履约亏损 = 2 − 5 = −3元（亏损3元）。</p>
+<p class="lead">卖出行权价85元的认购期权，收权利金2元，到期股价90元，求盈亏。</p>
+<p class="body">第一步：判断是否被行权。90 &gt; 85，买方会行权；</p>
+<p class="body">第二步：卖方履约亏损 = 90 − 85 = 5元/股（要按85元卖出市价90元的股票）；</p>
+<p class="body">第三步：净盈亏 = 权利金 − 履约亏损 = 2 − 5 = −3元（亏损3元）。</p>
 <p class="body">卖方盈亏公式：认购卖方每股盈亏 = 权利金 − max(到期价 − 行权价, 0)</p>
 <h3>风险对冲方式（题库第35、76题）：卖出认购后怕上涨，可以用以下方式对冲：</h3>
 <p class="body">买入现货（股票涨，现货盈利抵补期权亏损）；</p>
@@ -1183,7 +1218,10 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <figure class="chart"><svg viewBox="0 0 660 380" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"><title>卖出认沽期权到期损益（K=50，权利金 5 元）</title><text x="56" y="26" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">卖出认沽期权到期损益（K=50，权利金 5 元）</text><line x1="56" y1="89.0" x2="610" y2="89.0" stroke="#888780" stroke-width="1" stroke-dasharray="4,4"/><line x1="56" y1="40" x2="56" y2="334" stroke="#D3D1C7" stroke-width="1"/><line x1="56" y1="334" x2="610" y2="334" stroke="#D3D1C7" stroke-width="1"/><text x="56.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="50" y="44.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">10.0</text><text x="194.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="50" y="117.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-5.0</text><text x="333.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">40.0</text><text x="50" y="191.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-20.0</text><text x="471.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">60.0</text><text x="50" y="264.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-35.0</text><text x="610.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">80.0</text><text x="50" y="338.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-50.0</text><path d="M 56.0,309.5 L 367.625,89.0 L 402.25,64.5 L 610.0,64.5" fill="none" stroke="#378ADD" stroke-width="2"/><text x="608" y="60.5" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#378ADD">卖出认沽</text><circle cx="367.625" cy="89.0" r="4" fill="#EF9F27"/><text x="367.625" y="79.0" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 45</text><text x="60" y="230" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#639922">股价下跌亏损（最大 = K − 权利金）</text><text x="420" y="60" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#E24B4A">最大收益 = 权利金 5 元</text></svg><figcaption>卖出认沽损益图</figcaption></figure>
 <h3>行权价选择与风险（题库第102题）：卖出认沽时，行权价越高，风险越大——行权价越高越容易被行权。（与卖出认购正好相反，注意对比记忆。）</h3>
 <h3>到期盈亏计算（分步演示，题库第39题）：</h3>
-<p class="lead">卖出行权价85元的认沽期权，收权利金2元，到期股价80元，求盈亏。 - 第一步：80 &lt; 85，买方会行权； - 第二步：卖方履约亏损 = 85 − 80 = 5元/股（要按85元买入市价80元的股票）； - 第三步：净盈亏 = 2 − 5 = −3元。</p>
+<p class="lead">卖出行权价85元的认沽期权，收权利金2元，到期股价80元，求盈亏。</p>
+<p class="body">第一步：80 &lt; 85，买方会行权；</p>
+<p class="body">第二步：卖方履约亏损 = 85 − 80 = 5元/股（要按85元买入市价80元的股票）；</p>
+<p class="body">第三步：净盈亏 = 2 − 5 = −3元。</p>
 <p class="body">认沽卖方的义务（题库第167题）：买方行权时，卖方有义务按行权价买入标的证券。</p>
 <h3>风险对冲方式（题库第36、77题）：</h3>
 <p class="body">融券卖出现货（股票跌，融券空头盈利抵补）；</p>
@@ -1370,11 +1408,20 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">每股最大收益 = 权利金 + (行权价 − 股票买入价)（股价≥行权价时被行权，收益封顶）；</p>
 <p class="body">最大风险：股价大跌时，股票亏损 − 权利金（缓冲有限）。</p>
 <p class="body">到期总盈亏计算（分步演示，题库第118题）：</p>
-<p class="lead">王先生10元买入1万股甲股票，卖出行权价11元的认购期权，收权利金0.5元/股，到期股价11.5元。 - 第一步：11.5 &gt; 11，期权被行权，股票按11元卖出； - 第二步：股票收益 = (11 − 10) × 10000 = 10000元； - 第三步：权利金收益 = 0.5 × 10000 = 5000元； - 第四步：总盈利 = 10000 + 5000 = 15000元。</p>
+<p class="lead">王先生10元买入1万股甲股票，卖出行权价11元的认购期权，收权利金0.5元/股，到期股价11.5元。</p>
+<p class="body">第一步：11.5 &gt; 11，期权被行权，股票按11元卖出；</p>
+<p class="body">第二步：股票收益 = (11 − 10) × 10000 = 10000元；</p>
+<p class="body">第三步：权利金收益 = 0.5 × 10000 = 5000元；</p>
+<p class="body">第四步：总盈利 = 10000 + 5000 = 15000元。</p>
 <p class="body">再看一道亏损的（题库第19题）：</p>
-<p class="lead">持有10000股，成本30元/股，卖出10张行权价32元的认购期权（合约单位1000），收权利金0.4元/股共4000元，到期股价29元。 - 第一步：29 &lt; 32，期权作废，4000元权利金落袋； - 第二步：股票浮亏 = (29 − 30) × 10000 = −10000元； - 第三步：总盈亏 = −10000 + 4000 = −6000元 = −0.6万元。 - 启示：备兑开仓只能用权利金”缓冲”下跌，挡不住大跌。</p>
+<p class="lead">持有10000股，成本30元/股，卖出10张行权价32元的认购期权（合约单位1000），收权利金0.4元/股共4000元，到期股价29元。</p>
+<p class="body">第一步：29 &lt; 32，期权作废，4000元权利金落袋；</p>
+<p class="body">第二步：股票浮亏 = (29 − 30) × 10000 = −10000元；</p>
+<p class="body">第三步：总盈亏 = −10000 + 4000 = −6000元 = −0.6万元。</p>
+<p class="body">启示：备兑开仓只能用权利金”缓冲”下跌，挡不住大跌。</p>
 <p class="body">最大收益计算（题库第192题）：</p>
-<p class="lead">买股成本20元，备兑卖出行权价22元的认购期权，收权利金0.8元，求每股最大收益。 - 最大收益 = 权利金 + (行权价 − 成本) = 0.8 + (22 − 20) = 2.8元。</p>
+<p class="lead">买股成本20元，备兑卖出行权价22元的认购期权，收权利金0.8元，求每股最大收益。</p>
+<p class="body">最大收益 = 权利金 + (行权价 − 成本) = 0.8 + (22 − 20) = 2.8元。</p>
 <h2>6.2 备兑相关的四个指令</h2>
 <div class="table-wrap"><table>
 <tr><th>指令</th><th>作用</th><th>记忆</th></tr>
@@ -1387,7 +1434,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>易错点：备兑策略只涉及认购期权，所有”增加/减少认沽备兑持仓”的选项都是干扰项。</h3>
 <h2>6.3 合约调整对备兑持仓的影响</h2>
 <p class="body">标的证券除权除息时，合约会调整（见第二章），备兑持仓受影响如下：</p>
-<p class="body">现金分红（题库第115题）：合约单位增加（行权价下调、单位增多以保持名义价值），原来的股票数量不够担保了 → 备兑证券不足；</p>
+<p class="body">现金分红（题库第115题）：行权价下调、合约单位相应增加，好让合约整体的名义价值保持不变。合约单位一变多，原来那点股票就不够担保了 → 备兑证券不足；</p>
 <p class="body">备兑不足的处理（题库第15、96题）：合约调整当日应当补足证券或自行平仓；否则将被强行平仓；</p>
 <p class="body">送股（如10送10）（题库第173题）：持股数量同比例增加，自动补足 → 没有影响；</p>
 <p class="body">ETF份额拆分（如1拆2）（题库第155题）：持有份额同比例增加 → 没有影响。</p>
@@ -1405,14 +1452,21 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>每股成本 = 股票买入价 + 认沽权利金（题库第119题：25 + 2 = 27元）。</h3>
 <h3>最大亏损 = (股票成本 + 权利金) − 行权价（被锁定，不再随股价下跌扩大）。</h3>
 <h3>保险张数计算（重点题型，分步演示）：</h3>
-<p class="lead">题库第60题：小李持有15000份50ETF，合约单位10000，最多可买几张认沽期权做保险？ - 第一步：可保险数量 = 持有量 ÷ 合约单位 = 15000 ÷ 10000 = 1.5； - 第二步：向下取整 = 1张（只能整买保险，剩下的5000份”裸奔”）。</p>
+<p class="lead">题库第60题：小李持有15000份50ETF，合约单位10000，最多可买几张认沽期权做保险？</p>
+<p class="body">第一步：可保险数量 = 持有量 ÷ 合约单位 = 15000 ÷ 10000 = 1.5；</p>
+<p class="body">第二步：向下取整 = 1张（只能整买保险，剩下的5000份”裸奔”）。</p>
 <p class="lead">题库第117题：持有5500股，合约单位1000 → 5500 ÷ 1000 = 5.5 → 5张。</p>
 <p class="lead">题库第183题：持有23000股，合约单位5000 → 23000 ÷ 5000 = 4.6 → 4张。</p>
 <p class="lead">记忆口诀：保险张数 = 持股数 ÷ 合约单位，向下取整。</p>
 <p class="body">保险策略盈亏计算（分步演示，题库第20题）：</p>
-<p class="lead">王先生14元/股买入10000股，以0.5元买入1张行权价13元的认沽期权（合约单位10000），到期股价15元。 - 第一步：15 &gt; 13，认沽虚值作废，损失权利金 0.5 × 10000 = 5000元； - 第二步：股票盈利 = (15 − 14) × 10000 = 10000元； - 第三步：总盈利 = 10000 − 5000 = 5000元。</p>
+<p class="lead">王先生14元/股买入10000股，以0.5元买入1张行权价13元的认沽期权（合约单位10000），到期股价15元。</p>
+<p class="body">第一步：15 &gt; 13，认沽虚值作废，损失权利金 0.5 × 10000 = 5000元；</p>
+<p class="body">第二步：股票盈利 = (15 − 14) × 10000 = 10000元；</p>
+<p class="body">第三步：总盈利 = 10000 − 5000 = 5000元。</p>
 <p class="body">股价下跌时的保护效果（题库第184题）：</p>
-<p class="lead">持股成本40元，买入行权价42元的认沽，付权利金3元/股，到期股价39元。 - 第一步：39 &lt; 42，行权，按42元卖出； - 第二步：每股盈亏 = (42 − 40) − 3 = −1元（若没有保险，亏40−39=1元之外还会继续放大；保险锁定了42元的卖出价）。</p>
+<p class="lead">持股成本40元，买入行权价42元的认沽，付权利金3元/股，到期股价39元。</p>
+<p class="body">第一步：39 &lt; 42，行权，按42元卖出；</p>
+<p class="body">第二步：每股盈亏 = (42 − 40) − 3 = −1元（若没有保险，亏40−39=1元之外还会继续放大；保险锁定了42元的卖出价）。</p>
 <p class="body">特殊场景应用（题库第140、144题）：</p>
 <p class="body">股票被质押无法卖出、又担心下跌 → 保险策略（买认沽）；</p>
 <p class="body">想长期持股但规避价格风险
@@ -1583,7 +1637,11 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <figure class="chart"><svg viewBox="0 0 660 380" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"><title>牛市认购价差到期损益（买 K=40 付 4 元，卖 K=50 收 2 元）</title><text x="56" y="26" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">牛市认购价差到期损益（买 K=40 付 4 元，卖 K=50 收 2 元）</text><line x1="56" y1="200.36363636363635" x2="610" y2="200.36363636363635" stroke="#888780" stroke-width="1" stroke-dasharray="4,4"/><line x1="56" y1="40" x2="56" y2="334" stroke="#D3D1C7" stroke-width="1"/><line x1="56" y1="334" x2="610" y2="334" stroke="#D3D1C7" stroke-width="1"/><text x="56.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="50" y="44.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">12.0</text><text x="194.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="50" y="117.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">6.5</text><text x="333.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">40.0</text><text x="50" y="191.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">1.0</text><text x="471.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">60.0</text><text x="50" y="264.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-4.5</text><text x="610.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">80.0</text><text x="50" y="338.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-10.0</text><path d="M 56.0,227.0909090909091 L 333.0,227.0909090909091 L 346.85,200.36363636363635 L 402.25,93.45454545454545 L 610.0,93.45454545454545" fill="none" stroke="#378ADD" stroke-width="2"/><text x="608" y="89.45454545454545" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#378ADD">牛市价差</text><circle cx="346.85" cy="200.36363636363635" r="4" fill="#EF9F27"/><text x="346.85" y="190.36363636363635" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 42</text><text x="60" y="80" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#639922">最大亏损 = 净成本 2 元</text><text x="430" y="60" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#E24B4A">最大收益 = 行权价间距 − 净成本 = 8 元</text></svg><figcaption>牛市价差损益图</figcaption></figure>
 <h3>适用场景（题库第46题）：预期标的缓慢升势、升幅不大。</h3>
 <h3>到期盈亏计算（分步演示，题库第149题）：</h3>
-<p class="lead">买入行权价20元的认购，付权利金2元；卖出同到期日行权价30元的认购，收权利金1.5元。到期股价26元，求收益。 - 第一步：净权利金成本 = 2 − 1.5 = 0.5元； - 第二步：买入的认购（K=20）实值，行权收益 = 26 − 20 = 6元； - 第三步：卖出的认购（K=30）虚值（26 &lt; 30），不被行权，无损失； - 第四步：总收益 = 6 − 0.5 = 5.5元。</p>
+<p class="lead">买入行权价20元的认购，付权利金2元；卖出同到期日行权价30元的认购，收权利金1.5元。到期股价26元，求收益。</p>
+<p class="body">第一步：净权利金成本 = 2 − 1.5 = 0.5元；</p>
+<p class="body">第二步：买入的认购（K=20）实值，行权收益 = 26 − 20 = 6元；</p>
+<p class="body">第三步：卖出的认购（K=30）虚值（26 &lt; 30），不被行权，无损失；</p>
+<p class="body">第四步：总收益 = 6 − 0.5 = 5.5元。</p>
 <p class="body">熊市认购价差（题库第132题）：方向相反——买入较高行权价认购 + 卖出较低行权价认购（“熊市买高卖低”），适合温和看跌，同样是双有限结构。</p>
 <h2>7.3 合成股票：用期权”拼”出股票</h2>
 <p class="body">生活化比喻：调配”仿制配方”</p>
@@ -1591,11 +1649,14 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>合成股票多头（题库第44题）：买入认购 + 卖出认沽（同行权价、同到期日、同标的）。</h3>
 <p class="body">股价上涨：认购赚钱、认沽作废 → 像持股一样赚；</p>
 <p class="body">股价下跌：认沽被行权亏损 → 像持股一样亏；</p>
-<p class="body">风险收益特征：风险（下跌空间）大、收益（上涨空间）大，与持股类似，即”风险无限、收益无限”口径（题库第83题）。</p>
+<p class="body">风险收益特征：股价能一路向上涨，收益就没有上限；股价最多跌到 0，亏损也就没有下限。涨跌空间都跟直接持股一样大，所以按题库口径称为”风险无限、收益无限”（题库第83题）。</p>
 <p class="body">合成股票空头（题库第108题）：卖出认购 + 买入认沽（方向全反过来）。</p>
 <h3>合成条件（题库第203题）：同行权价、同到期日、同标的——不要求权利金相同。</h3>
 <h3>合成多头盈亏计算（分步演示，题库第45题）：</h3>
-<p class="lead">以1.15元买入行权价45元的认购，以1.5元卖出同行权价的认沽，到期股价47元，求盈亏。 - 第一步：认购：47 &gt; 45，行权收益 = 47 − 45 = 2元，扣除权利金1.15，净赚 0.85元； - 第二步：认沽：47 &gt; 45，买方放弃行权，卖方净收权利金1.5元； - 第三步：合计 = 0.85 + 1.5 = 2.35元。</p>
+<p class="lead">以1.15元买入行权价45元的认购，以1.5元卖出同行权价的认沽，到期股价47元，求盈亏。</p>
+<p class="body">第一步：认购：47 &gt; 45，行权收益 = 47 − 45 = 2元，扣除权利金1.15，净赚 0.85元；</p>
+<p class="body">第二步：认沽：47 &gt; 45，买方放弃行权，卖方净收权利金1.5元；</p>
+<p class="body">第三步：合计 = 0.85 + 1.5 = 2.35元。</p>
 <p class="body">同方向组合的判断（题库第86题）：卖出认沽与备兑开仓收益结构相似——都是”温和看涨/不看跌”的结构，上涨时收益封顶，下跌时承担亏损。</p>
 <h2>7.4 跨式与勒式：赌”波动”而非赌”方向”</h2>
 <p class="body">生活化比喻：赌比赛”精不精彩”，不赌谁赢</p>
@@ -1757,7 +1818,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <text x="568" y="84" text-anchor="middle" font-size="13" font-weight="500" fill="#791F1F" font-family="-apple-system,PingFang SC,sans-serif">强行平仓</text>
 <text x="568" y="106" text-anchor="middle" font-size="11" fill="#A32D2D" font-family="-apple-system,PingFang SC,sans-serif">违规强制措施</text>
 </g>
-<text x="330" y="170" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="-apple-system,PingFang SC,sans-serif">“三不足一超限”：钱不足、券不足、仓超限 → 强平</text>
+<text x="330" y="170" text-anchor="middle" font-size="11" fill="#5F5E5A" font-family="-apple-system,PingFang SC,sans-serif">“两不足一超限”：钱不足、券不足、仓超限 → 强平</text>
 </svg><figcaption>风控四道防线</figcaption></figure>
 <div class="table-wrap"><table>
 <tr><th>制度</th><th>管什么</th><th>生活化比喻</th></tr>
@@ -1767,7 +1828,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <tr><td>强行平仓</td><td>违规后的强制措施</td><td>物业强制清退：屡次违规就强制搬离</td></tr>
 </table></div>
 <h2>8.2 限仓制度：限制你能持有多少</h2>
-<p class="body">定义（题库第18、61、156题）：规定投资者可以持有的某一标的所有合约的——</p>
+<p class="body">定义（题库第18、61、156题）：限仓制度规定投资者对某一标的的全部合约，最多能持有多大——具体管两项上限：</p>
 <p class="body">权利仓持仓最大数量；</p>
 <p class="body">总持仓最大数量（权利仓+义务仓）。</p>
 <p class="body">要点：</p>
@@ -1788,7 +1849,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <tr><td>收取对象</td><td>仅卖方</td><td>买卖双方</td></tr>
 <tr><td>保证金比例</td><td>随风险变化（逐日盯市）</td><td>相对固定</td></tr>
 </table></div>
-<p class="lead">题库第137题问”错误的说法”，答案是”期货的保证金比例变化”——期货保证金比例相对固定，期权的才随标的波动而变化。</p>
+<p class="lead">题库第137题问的是”错误的说法”，答案恰恰就是”期货的保证金比例变化”。这个对比要记牢：期货的保证金比例相对固定，期权的保证金比例才跟着标的价格波动而变。</p>
 <h2>8.5 强行平仓制度：三种触发情形</h2>
 <p class="body">触发强行平仓的三类情形（题库第78、96、104题）：</p>
 <p class="body">保证金不足：义务仓保证金不够且未及时补足；</p>
@@ -1797,7 +1858,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">特别注意——以下情形不属于强行平仓：</p>
 <p class="body">到期日仍持有仓位（持有到期是正常行为，等待行权或作废）；</p>
 <p class="body">到期日买方不行权（放弃行权是买方的合法权利）。</p>
-<p class="body">记忆口诀：“三不足一超限——钱不足、券不足、仓超限。”到期相关的情形都不是强平理由。</p>
+<p class="body">记忆口诀：“两不足一超限——钱不足、券不足、仓超限。”到期相关的情形都不是强平理由。</p>
 <h2>8.6 投资者适当性分级</h2>
 <p class="body">交易所对个人投资者实行分级管理：</p>
 <div class="table-wrap"><table>
@@ -1964,7 +2025,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">“张数计算”一律向下取整；</p>
 <p class="body">到期价=行权价时，期权作废：买方亏光权利金，卖方净赚权利金。</p>
 <p class="body">祝考试顺利
-<div class="practice"><h4>实务专栏 · 期权交易成本一览</h4><p>上交所期权主要费用（供参考，以券商为准）：① <b>交易佣金</b>（券商，买卖双向）；② <b>经手费</b>（交易所，按张）；③ <b>结算费</b>（中国结算）；④ 行权/结算时可能产生过户费、印花税（个股行权过户费；ETF 通常免印花税）。期权按"张"收费，单张费用较低，但高频交易时仍需关注。</p></div>，早日开通权限！记住：通过考试只是入场券，真正的功夫在实盘之外——先用模拟盘练习，再上真金白银。</p>
+<div class="practice"><h4>实务专栏 · 期权交易成本一览</h4><p>上交所期权主要费用（供参考，以券商为准）：① <b>交易佣金</b>（券商，买卖双向）；② <b>经手费</b>（交易所，按张）；③ <b>结算费</b>（中国结算）；④ 行权/结算时可能产生过户费、印花税（个股行权过户费；ETF 通常免印花税）。期权按"张"收费，单张费用较低，但高频交易时仍需关注。</p></div>，早日开通权限！最后提醒一句：通过考试只是拿到入场券，真正的本领得在真金白银之前练出来——先用模拟盘把每种策略都走一遍，再上实盘，才能少交学费。</p>
 <div class="table-wrap"><table>
 <tr><th>题号</th><th>答案</th><th>所属章节</th><th>考点</th></tr>
 <tr><td>1</td><td>C</td><td>第一章 期权基础知识</td><td>买方权利义务</td></tr>
@@ -2233,14 +2294,20 @@ const EXPL = {"1": ["正确答案：C。行权是买方的权利，卖方只有�
 const PRAC = {"P1-1": {"a": "B", "t": "权利金是期权的价格，买方支付、卖方收取。保证金是卖方才需要交的担保资金。", "c": 1, "n": "1"}, "P1-2": {"a": "C", "t": "卖方收权利金、担义务、需缴保证金。A、B、D都是买方特征或错误描述。", "c": 1, "n": "2"}, "P1-3": {"a": "C", "t": "认沽期权”价高为实”：行权价35元 > 市价30元，可以以35元卖出市价30元的东西，实值。A为虚值，B为平值。", "c": 1, "n": "3"}, "P1-4": {"a": "B", "t": "买方最大亏损=权利金；A是卖方的风险特征；C是卖方面临的情形；D错，买方可以放弃行权。", "c": 1, "n": "4"}, "P1-5": {"a": "C", "t": "美式可在到期前任一交易日行权，欧式只能到期日行权，与国家无关。", "c": 1, "n": "5"}, "P1-6": {"a": "A", "t": "内在价值=max(10−8,0)=2元；时间价值=2.5−2=0.5元。", "c": 1, "n": "6"}, "P1-7": {"a": "C", "t": "A错误（二者有明显区别）；B错误（权证投资者只能做买方）；D错误（权证投资者不交保证金）。", "c": 1, "n": "7"}, "P1-8": {"a": "B", "t": "合约代码中调整标志位M表示未调整，A、B、C…依次表示第1、2、3…次调整，与美式/实值无关。", "c": 1, "n": "8"}, "P2-1": {"a": "D", "t": "开盘集合竞价9:15–9:25；收盘集合竞价14:57–15:00。", "c": 2, "n": "1"}, "P2-2": {"a": "C", "t": "第四个星期三。注意与股指期货”第三个星期五”区分。", "c": 2, "n": "2"}, "P2-3": {"a": "C", "t": "名义价值不变是调整原则；价格波动无需调整（A错）；分红要调整（B错）；行权价通常要变（D错）。", "c": 2, "n": "3"}, "P2-4": {"a": "C", "t": "实物交割：认购行权付钱收券，认沽行权付券收钱。", "c": 2, "n": "4"}, "P2-5": {"a": "C", "t": "当月、下月及最近两个季月，共四个月份。", "c": 2, "n": "5"}, "P2-6": {"a": "C", "t": "至少5个：1个平值、2个实值、2个虚值。", "c": 2, "n": "6"}, "P2-7": {"a": "D", "t": "A、B、C均与实际规则相反：行权指令当日可撤销；行权日买入当日可行权；行权申报时间比交易时间长半小时。", "c": 2, "n": "7"}, "P3-1": {"a": "A", "t": "内在价值 = max(30−28, 0) = 2元；时间价值 = 3.5 − 2 = 1.5元。", "c": 3, "n": "1"}, "P3-2": {"a": "D", "t": "认沽期权标的价格与期权价值反向变动，Delta为负值（−1到0之间）。", "c": 3, "n": "2"}, "P3-3": {"a": "A", "t": "波动率对两类期权都是正向影响——“悬念越大，门票越贵”。", "c": 3, "n": "3"}, "P3-4": {"a": "B", "t": "Theta为负值，时间流逝期权贬值，下降3个单位。", "c": 3, "n": "4"}, "P3-5": {"a": "B", "t": "c + PV(K) = p + S → 3 + 50 = p + 50 → p = 3元（平值时认购认沽价格相等，利率为0的特例）。", "c": 3, "n": "5"}, "P3-6": {"a": "C", "t": "标的价格上涨，认购更值钱（涨），认沽更不值钱（跌）。", "c": 3, "n": "6"}, "P3-7": {"a": "B", "t": "杠杆倍数 = 30% ÷ (−10%) = −3。负号表示期权与标的价格反向变动。", "c": 3, "n": "7"}, "P4-1": {"a": "D", "t": "买入开仓的成本就是权利金——这是你全部的风险敞口。", "c": 4, "n": "1"}, "P4-2": {"a": "B", "t": "每股盈利 = (36−30)−2 = 4元；总盈利 = 4×10000 = 40000元。", "c": 4, "n": "2"}, "P4-3": {"a": "B", "t": "权利仓（买入开仓）用”卖出平仓”了结；A是义务仓的了结方式。", "c": 4, "n": "3"}, "P4-4": {"a": "B", "t": "认沽期权到期股价高于行权价=虚值，放弃行权，损失全部权利金。", "c": 4, "n": "4"}, "P4-5": {"a": "B", "t": "每股盈利 = (15−13)−0.5 = 1.5元；总盈利 = 1.5×5000 = 7500元。", "c": 4, "n": "5"}, "P4-6": {"a": "B", "t": "(0.65−0.5)×10000 = 1500元。", "c": 4, "n": "6"}, "P4-7": {"a": "B", "t": "虚值认购只有标的大涨才能变成实值获利，所以反映”预期大涨”。", "c": 4, "n": "7"}, "P5-1": {"a": "B", "t": "卖出认购赌”不涨”：不涨或下跌都赚钱，大涨则巨亏。", "c": 5, "n": "1"}, "P5-2": {"a": "B", "t": "卖出认沽赌”不跌”。", "c": 5, "n": "2"}, "P5-3": {"a": "C", "t": "12 > 10被行权；盈亏 = 0.5 − (12−10) = −1.5元。", "c": 5, "n": "3"}, "P5-4": {"a": "A", "t": "12 > 10，认沽虚值不被行权，净赚权利金 +0.5元。", "c": 5, "n": "4"}, "P5-5": {"a": "C", "t": "实值期权义务最重、被行权概率最高，保证金最高。", "c": 5, "n": "5"}, "P5-6": {"a": "C", "t": "卖出认沽同样是”赌不跌”，与卖出认购的上涨风险无法互抵，反而叠加风险。", "c": 5, "n": "6"}, "P5-7": {"a": "B", "t": "认沽行权价越高越实值、越容易被行权，卖方风险越大。", "c": 5, "n": "7"}, "P5-8": {"a": "C", "t": "标的涨→认购卖方越可能亏损→保证金上调。", "c": 5, "n": "8"}, "P6-1": {"a": "D", "t": "备兑=全额担保，正因如此才免缴保证金。", "c": 6, "n": "1"}, "P6-2": {"a": "B", "t": "锁定=把股票转为备兑用途=增加可开仓额度；解锁则相反。", "c": 6, "n": "2"}, "P6-3": {"a": "B", "t": "8000 ÷ 2000 = 4，正好整除，可买4张。", "c": 6, "n": "3"}, "P6-4": {"a": "C", "t": "最大收益 = 权利金 + (行权价 − 成本) = 1 + (32 − 30) = 3元。", "c": 6, "n": "4"}, "P6-5": {"a": "C", "t": "拆分后持有份额同比例翻倍，自动覆盖调整后的合约单位，没有影响。", "c": 6, "n": "5"}, "P6-6": {"a": "B", "t": "保险=持股+买认沽。D是备兑开仓。", "c": 6, "n": "6"}, "P6-7": {"a": "B", "t": "20 < 24，行权按24元卖出；每股盈亏 = (24 − 25) − 1 = −2元。若无保险将亏5元，保险锁定了亏损。", "c": 6, "n": "7"}, "P6-8": {"a": "B", "t": "保险策略的前提是”有货可保”——持有足额标的证券。", "c": 6, "n": "8"}, "P7-1": {"a": "A", "t": "“牛市买低卖高”。", "c": 7, "n": "1"}, "P7-2": {"a": "C", "t": "价差组合一买一卖互相封顶，双有限。", "c": 7, "n": "2"}, "P7-3": {"a": "B", "t": "买认购+卖认沽=合成多头；反之为合成空头。", "c": 7, "n": "3"}, "P7-4": {"a": "C", "t": "跨式赌大波动，不赌方向。", "c": 7, "n": "4"}, "P7-5": {"a": "C", "t": "勒式两条腿都是虚值，便宜但要求行情更极端。", "c": 7, "n": "5"}, "P7-6": {"a": "A", "t": "认购净赚 = (43−40) − 2 = 1元；认沽虚值不被行权，净收权利金1.2元；合计 = 1 + 1.2 = 2.2元。", "c": 7, "n": "6"}, "P8-1": {"a": "B", "t": "限仓管”张数”：权利仓+总持仓。", "c": 8, "n": "1"}, "P8-2": {"a": "C", "t": "保证金不足是强平三情形之一；A、D是正常到期行为，B只是浮亏不构成违规。", "c": 8, "n": "2"}, "P8-3": {"a": "C", "t": "期权只向卖方收（买方无义务），期货双向收；期权保证金比例随风险变化。", "c": 8, "n": "3"}, "P8-4": {"a": "C", "t": "备兑不足→补足或平仓→否则强平。", "c": 8, "n": "4"}, "P8-5": {"a": "B", "t": "一级=保守策略（备兑+保险）；卖出开仓类需要三级权限。", "c": 8, "n": "5"}};     /* 本章练习：key -> {a:正确选项, t:解析} */
 
 const K = {wrong:'opt_wrong', done:'opt_done', right:'opt_right', read:'opt_read', exam:'opt_exam',
-           theme:'opt_theme', inline:'opt_inline'};
+           theme:'opt_theme', inline:'opt_inline',
+           picks:'opt_picks', pos:'opt_pos', run:'opt_run'};
 const g = (k,d)=>{ try{const v=localStorage.getItem(k); return v?JSON.parse(v):d}catch(e){return d} };
 const s = (k,v)=>{ try{localStorage.setItem(k,JSON.stringify(v))}catch(e){} };
 
+/* picks：205 题库每题最后选中的选项（完成状态回显）
+   pos  ：当前位置（视图 / 章节 / 题号 / 滚动像素）——"当前题号"就存在这里
+   run  ：进行中的模拟考试（题号、已选答案、剩余时间） */
 let st = { wrong:g(K.wrong,[]), done:g(K.done,[]), right:g(K.right,[]), read:g(K.read,[]), exam:g(K.exam,[]),
-           theme:g(K.theme,'light'), inline:g(K.inline,{}) };
+           theme:g(K.theme,'light'), inline:g(K.inline,{}), picks:g(K.picks,{}),
+           pos:g(K.pos,null), run:g(K.run,null) };
 const save = ()=>{ s(K.wrong,st.wrong); s(K.done,st.done); s(K.right,st.right); s(K.read,st.read); s(K.exam,st.exam);
-                   s(K.theme,st.theme); s(K.inline,st.inline); };
+                   s(K.theme,st.theme); s(K.inline,st.inline); s(K.picks,st.picks);
+                   s(K.pos,st.pos); s(K.run,st.run); };
 
 const $ = (id)=>document.getElementById(id);
 
@@ -2253,10 +2320,50 @@ function syncHeaderHeight(){
   try{ document.documentElement.style.setProperty('--hh', headerH()+'px'); }catch(e){}
 }
 
+/* ===== 学习进度持久化（localStorage） =====
+   把"当前看到哪里、当前做到第几题"写进 localStorage，刷新 / 关掉重开都能续接。 */
+let _posTick = 0, _posTimer = null;
+function savePos(patch){
+  st.pos = Object.assign(st.pos || {}, patch, {t: Date.now()});
+  const now = Date.now();
+  if(now - _posTick >= 600){ _posTick = now; s(K.pos, st.pos); return; }
+  /* 节流不能丢掉最后一次变化：安排一次尾写，保证最终位置一定落盘 */
+  if(_posTimer) return;
+  _posTimer = setTimeout(()=>{
+    _posTimer = null; _posTick = Date.now(); s(K.pos, st.pos);
+  }, 620);
+}
+function flushPos(){
+  if(_posTimer){ clearTimeout(_posTimer); _posTimer = null; }
+  if(st.pos) s(K.pos, st.pos);
+}
+window.addEventListener('pagehide', flushPos);
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) flushPos(); });
+
+/* 阅读视图记「章节 + 滚动位置」，刷题视图记「当前题号」 */
+function capturePos(){
+  const rv = $('view-read');
+  if(rv && !rv.classList.contains('hidden')){
+    savePos({view:'read', ch: currentCh || 0,
+             y: Math.round(window.pageYOffset || document.documentElement.scrollTop || 0)});
+    return;
+  }
+  const pv = $('view-practice');
+  if(pv && !pv.classList.contains('hidden')){
+    const limit = headerH() + 24;
+    let cur = 0;
+    pv.querySelectorAll('.card[id^="q-"]').forEach(c=>{
+      if(c.getBoundingClientRect().top <= limit) cur = Number(c.id.slice(2));
+    });
+    savePos({view:'practice', qid: cur});
+  }
+}
+
 function show(v, keepScroll){
   document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));
   $('view-'+v).classList.remove('hidden');
   document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on', b.dataset.v===v));
+  if(v !== 'home') savePos({view:v});          /* 记录当前所在视图 */
   if(!keepScroll){ window.scrollTo(0,0); requestAnimationFrame(()=>window.scrollTo(0,0)); }
   if(v==='practice') renderPractice();
   if(v==='exam') renderExam();
@@ -2265,6 +2372,7 @@ function show(v, keepScroll){
   if(v==='cards') renderCards();
   if(v==='toc') renderToc();
   updateProgress();
+  renderHomeResume();
 }
 
 function optLabel(i){ return String.fromCharCode(65+i); }
@@ -2276,7 +2384,7 @@ function grade(q, sel){
   return ok;
 }
 
-function qHTML(q, graded, sel){
+function qHTML(q, graded, sel, redoCall){
   let flag = q.flag ? `<span class="q-flag">⚠ 疑错</span>` : '';
   let h = `<div class="card" id="q-${q.id}">
     <div><span class="q-tag">#${q.id}</span><span class="q-tag">${q.point}</span><span class="q-tag">第${q.chapter}章</span>${flag}</div>
@@ -2293,9 +2401,16 @@ function qHTML(q, graded, sel){
   if(graded){
     const ok = sel===q.answer;
     h += `<div class="explain">${ok?'<span class="r">✓ 正确</span>':'<span class="w">✗ 错误，正确答案 '+q.answer+'</span>'}${q.flag?' <span class="f">⚠ '+q.flag+'</span>':''}<br>${q.explain}</div>`;
+    if(redoCall) h += `<div class="q-bar"><button class="iq-redo" onclick="${redoCall}">↺ 重做本题</button></div>`;
   }
   h += `</div>`;
   return h;
+}
+
+/* 已判分的卡片：选项锁定，只能点"重做本题" */
+function lockCard(qid){
+  const c = $('q-'+qid); if(!c) return;
+  c.querySelectorAll('.opt').forEach(b=>{ b.disabled = true; b.onclick = null; });
 }
 
 function bindOpts(container, onpick){
@@ -2432,72 +2547,109 @@ let filterCh=0, filterPt='';
 function renderPractice(){
   const box = $('practice-list');
   let list = QS.filter(q=> (filterCh===0||q.chapter===filterCh) && (!filterPt||q.point===filterPt));
-  box.innerHTML = list.map(q=>qHTML(q,false,null)).join('');
+  /* 已作答的题按上次的选择直接显示判分结果（完成状态跟着 localStorage 一起复现） */
+  box.innerHTML = list.map(q=>{
+    const sel = st.picks[q.id];
+    return sel ? qHTML(q, true, sel, "redoPick("+q.id+",'practice')") : qHTML(q, false, null);
+  }).join('');
+  list.forEach(q=>{ if(st.picks[q.id]) lockCard(q.id); });
   bindOpts(box, (qid, sel, btn)=>{
     const q = QS.find(x=>x.id===qid);
-    const ok = grade(q, sel);
+    grade(q, sel);
+    st.picks[qid] = sel; save();          /* 落盘本题选择 */
     const card = $('q-'+qid);
-    const html = qHTML(q, true, sel);
-    card.outerHTML = html;
-    const nc = $('q-'+qid);
-    nc.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{});
+    card.outerHTML = qHTML(q, true, sel, "redoPick("+qid+",'practice')");
+    lockCard(qid);
     updateProgress();
   });
   $('practice-count').textContent = list.length + ' 题';
 }
 
 /* 模拟考试 */
-let examQ = [], examSel = {};
+let examQ = [], examSel = {}, timerId = null, remain = 30*60;
+function fmtT(s){ s = Math.max(0, s|0); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+/* 考试进行中状态落盘：题号、每题已选、剩余时间 —— 中途刷新/误关页面也不丢 */
+function saveRun(){
+  st.run = examQ.length ? {ids: examQ.map(q=>q.id), sel: examSel, remain: remain, t: Date.now()} : null;
+  s(K.run, st.run);
+}
 function renderExam(){
   const box = $('exam-box');
   if(examQ.length===0){
+    const r = st.run;
+    const resume = (r && r.ids && r.ids.length)
+      ? `<p style="color:var(--warn);font-size:13px">检测到一场未完成的考试：剩余 ${fmtT(r.remain)}，已答 ${Object.keys(r.sel||{}).length} 题。</p>
+         <p><button class="btn ghost" onclick="resumeExam()">继续上次考试</button>
+         <button class="btn ghost" onclick="resetExam()">作废并重新抽题</button></p>`
+      : '';
     box.innerHTML = `<div class="card" style="text-align:center;padding:30px">
       <h3>全真模拟考试</h3>
       <p style="color:var(--muted)">从 205 题随机抽 20 题，<b style="color:var(--danger)">全部答对</b>才算通过。<br>（与真实考试一致）</p>
-      <button class="btn" onclick="startExam()">开始模拟考试</button>
+      ${resume}
+      <p><button class="btn" onclick="startExam()">开始模拟考试</button></p>
       <div id="exam-history"></div></div>`;
     renderExamHistory();
     return;
   }
+  if(!(remain > 0)) remain = 30*60;
   box.innerHTML = `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center">
-      <b>模拟考试 · ${examQ.length} 题</b><span id="exam-timer" style="color:var(--danger);font-weight:700"></span></div></div>`
+      <b>模拟考试 · ${examQ.length} 题</b><span id="exam-timer" style="color:var(--danger);font-weight:700">${fmtT(remain)}</span></div></div>`
     + examQ.map(q=>qHTML(q,false, examSel[q.id]||null)).join('')
     + `<div class="card" style="text-align:center"><button class="btn" onclick="submitExam()">交卷</button>
        <button class="btn ghost" onclick="resetExam()">重新抽题</button></div>`;
   bindOpts(box, (qid, sel)=>{
-    examSel[qid]=sel;
+    examSel[qid]=sel; saveRun();           /* 每选一题即落盘 */
     const card=$('q-'+qid);
     card.querySelectorAll('.opt').forEach(b=>b.classList.toggle('sel', b.dataset.sel===sel));
   });
   startTimer();
 }
-let timerId=null, remain=30*60;
+/* 计时器只负责"继续跑"，初始值由 startExam / resumeExam 决定，避免来回切页把时间重置 */
 function startTimer(){
-  remain=30*60; clearInterval(timerId);
+  clearInterval(timerId);
+  if(!(remain > 0)) remain = 30*60;
+  const t=$('exam-timer'); if(t) t.textContent = fmtT(remain);
   timerId=setInterval(()=>{ remain--; if(remain<=0){clearInterval(timerId); submitExam(); return; }
-    const t=$('exam-timer'); if(t) t.textContent = Math.floor(remain/60)+':'+String(remain%60).padStart(2,'0');
+    const el=$('exam-timer'); if(el) el.textContent = fmtT(remain);
+    if(remain % 5 === 0) saveRun();
   },1000);
 }
 function startExam(){
   examQ = [...QS].sort(()=>Math.random()-0.5).slice(0,20);
-  examSel = {};
+  examSel = {}; remain = 30*60;
+  saveRun();
   renderExam();
 }
-function resetExam(){ examQ=[]; examSel={}; clearInterval(timerId); renderExam(); }
+function resumeExam(){
+  const r = st.run; if(!r || !r.ids) { renderExam(); return; }
+  examQ = r.ids.map(id=>QMAP[id]).filter(Boolean);
+  if(!examQ.length){ resetExam(); return; }
+  examSel = r.sel || {};
+  remain = r.remain || 30*60;
+  renderExam();
+}
+function resetExam(){
+  examQ=[]; examSel={}; remain=30*60;
+  st.run=null; s(K.run,null);
+  clearInterval(timerId); renderExam();
+}
 function submitExam(){
   clearInterval(timerId);
+  const total = examQ.length;
   let right=0, wrong=[];
   examQ.forEach(q=>{ const sel=examSel[q.id]; const ok = sel===q.answer;
     if(ok) right++; else wrong.push(q);
     if(!st.done.includes(q.id)){ st.done.push(q.id); if(ok) st.right.push(q.id); else if(!st.wrong.includes(q.id)) st.wrong.push(q.id); }
   });
+  st.exam.unshift({t:Date.now(), right, total, pass: right===total});
+  st.exam = st.exam.slice(0,20);
+  st.run = null;                            /* 已交卷，清掉进行中状态 */
   save();
-  st.exam.unshift({t:Date.now(), right, total:examQ.length, pass: right===examQ.length});
-  st.exam = st.exam.slice(0,20); save();
+  examQ = []; examSel = {}; remain = 30*60;
   $('exam-box').innerHTML = `<div class="card" style="text-align:center">
-    <h3 style="color:${right===examQ.length?'var(--ok)':'var(--danger)'}">${right===examQ.length?'✓ 通过！全部答对':'未通过'}</h3>
-    <p>答对 <b>${right}</b> / ${examQ.length} 题${right===examQ.length?'':'，错 '+wrong.length+' 题'}</p>
-    ${right===examQ.length?'<p style="color:var(--ok)">恭喜，已达到开通资格的要求！</p>':'<p style="color:var(--muted)">提示：错题已记录，可到"错题本"重做。</p>'}
+    <h3 style="color:${right===total?'var(--ok)':'var(--danger)'}">${right===total?'✓ 通过！全部答对':'未通过'}</h3>
+    <p>答对 <b>${right}</b> / ${total} 题${right===total?'':'，错 '+wrong.length+' 题'}</p>
+    ${right===total?'<p style="color:var(--ok)">恭喜，已达到开通资格的要求！</p>':'<p style="color:var(--muted)">提示：错题已记录，可到"错题本"重做。</p>'}
     <button class="btn" onclick="resetExam()">再来一次</button></div>`;
   renderExamHistory();
   updateProgress();
@@ -2515,16 +2667,21 @@ function renderWrong(){
   const box=$('wrong-list');
   const list = QS.filter(q=>st.wrong.includes(q.id));
   if(list.length===0){ box.innerHTML='<div class="card" style="text-align:center;color:var(--muted)">暂无错题，继续保持！</div>'; return; }
-  box.innerHTML = list.map(q=>qHTML(q,false,null)).join('');
+  box.innerHTML = list.map(q=>{
+    const sel = st.picks[q.id];
+    return sel ? qHTML(q, true, sel, "redoPick("+q.id+",'wrong')") : qHTML(q, false, null);
+  }).join('');
+  list.forEach(q=>{ if(st.picks[q.id]) lockCard(q.id); });
   bindOpts(box,(qid,sel)=>{
     const q=QS.find(x=>x.id===qid);
     const ok = sel===q.answer;
+    st.picks[qid] = sel; save();            /* 复习结果同样落盘 */
     if(ok) st.wrong = st.wrong.filter(x=>x!==qid);
     if(!st.done.includes(qid)) st.done.push(qid);
     if(ok && !st.right.includes(qid)) st.right.push(qid);
     save();
-    const card=$('q-'+qid); card.outerHTML = qHTML(q,true,sel);
-    const nc=$('q-'+qid); nc.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{});
+    const card=$('q-'+qid); card.outerHTML = qHTML(q,true,sel,"redoPick("+qid+",'wrong')");
+    lockCard(qid);
     setTimeout(renderWrong, 600);
     updateProgress();
   });
@@ -2562,8 +2719,8 @@ function pointStats(){
   return top.map(([k,v])=>`<div style="font-size:13px;display:flex;justify-content:space-between"><span>${k}</span><span>${v}</span></div><div class="pbar"><i style="width:${Math.round(v/mx*100)}%"></i></div>`).join('');
 }
 function exportData(){ const blob=new Blob([JSON.stringify(st,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='期权学习进度.json'; a.click(); }
-function importData(inp){ const f=inp.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ st={...st,...JSON.parse(r.result)}; save(); renderStats(); alert('已导入'); }catch(e){ alert('导入失败：文件格式错误'); } }; r.readAsText(f); }
-function resetAll(){ if(confirm('确定清空所有学习进度（错题/答题记录/考试记录）？')){ st={wrong:[],done:[],right:[],read:[],exam:[],theme:st.theme,inline:{}}; save(); renderStats(); updateProgress(); restoreInline(); } }
+function importData(inp){ const f=inp.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ st={...st,...JSON.parse(r.result)}; save(); renderStats(); renderHomeResume(); alert('已导入'); }catch(e){ alert('导入失败：文件格式错误'); } }; r.readAsText(f); }
+function resetAll(){ if(confirm('确定清空所有学习进度（错题/答题记录/考试记录/续接位置）？')){ st={wrong:[],done:[],right:[],read:[],exam:[],theme:st.theme,inline:{},picks:{},pos:null,run:null}; save(); examQ=[]; examSel={}; remain=30*60; clearInterval(timerId); renderStats(); updateProgress(); restoreInline(); renderHomeResume(); } }
 
 /* 速查卡 */
 function renderCards(){
@@ -2668,7 +2825,7 @@ let scrollTicking = false;
 window.addEventListener('scroll', ()=>{
   if(scrollTicking) return;
   scrollTicking = true;
-  requestAnimationFrame(()=>{ updateCurrentChapter(); scrollTicking = false; });
+  requestAnimationFrame(()=>{ updateCurrentChapter(); capturePos(); scrollTicking = false; });
 });
 window.addEventListener('resize', syncHeaderHeight);
 window.addEventListener('orientationchange', ()=>{ setTimeout(syncHeaderHeight, 350); });
@@ -2678,6 +2835,52 @@ function updateProgress(){
   const p = total? Math.round(done/total*100):0;
   const bar=document.querySelector('.progressbar i'); if(bar) bar.style.width=p+'%';
   const lbl=$('prog-label'); if(lbl) lbl.textContent = `已掌握 ${done}/${total} 题 · ${p}%`;
+}
+
+/* ===== 继续上次：把"当前题号 / 章节 / 滚动位置"还原回去 ===== */
+function redoPick(qid, where){
+  delete st.picks[qid]; save();
+  if(where === 'wrong') renderWrong(); else renderPractice();
+}
+function posLabel(p){
+  if(!p) return '';
+  if(p.view==='read')     return p.ch ? ('第 '+p.ch+' 章 的阅读位置') : '教材阅读位置';
+  if(p.view==='practice') return p.qid ? ('刷题 · 第 '+p.qid+' 题') : '刷题进度';
+  if(p.view==='exam')     return '模拟考试';
+  if(p.view==='wrong')    return '错题本';
+  if(p.view==='stats')    return '学习进度';
+  if(p.view==='cards')    return '速查卡';
+  if(p.view==='toc')      return '章节目录';
+  return '上次的位置';
+}
+function renderHomeResume(){
+  const box = $('home-resume'); if(!box) return;
+  const p = st.pos;
+  if(!p || !p.view || p.view === 'home'){ box.innerHTML = ''; return; }
+  box.innerHTML = `<button onclick="restorePos(true)">📌 继续上次：${posLabel(p)}</button>`;
+}
+function restorePos(manual){
+  const p = st.pos;
+  if(!p || !p.view || p.view === 'home'){ if(!manual) show('home'); return false; }
+  if(p.view === 'read'){
+    show('read', true);
+    const ch = p.ch || 0, y = p.y || 0;
+    const go = ()=>{
+      if(manual && ch){ const el = $('ch'+ch); if(el){ scrollToEl(el); return; } }
+      window.scrollTo(0, y);
+    };
+    /* 图片/字体可能改动布局，隔一小段时间再校正一次 */
+    requestAnimationFrame(()=>{ go(); setTimeout(go, 300); setTimeout(syncHeaderHeight, 360); });
+    return true;
+  }
+  if(p.view === 'practice'){
+    show('practice');
+    const qid = p.qid;
+    if(qid) requestAnimationFrame(()=>{ const el = $('q-'+qid); if(el) scrollToEl(el); });
+    return true;
+  }
+  show(p.view);
+  return true;
 }
 
 function toggleTheme(){
@@ -2710,7 +2913,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   updateProgress();
   restoreInline();
   syncHeaderHeight();
-  show('home');
+  restorePos(false);        /* 有上次位置就自动续接，没有则回首页 */
+  renderHomeResume();
   setTimeout(syncHeaderHeight, 400);
   if(document.fonts && document.fonts.ready && document.fonts.ready.then){ document.fonts.ready.then(syncHeaderHeight); }
 });

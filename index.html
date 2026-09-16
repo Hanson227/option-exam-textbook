@@ -422,7 +422,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">发行主体不同：期权由交易所标准化设计，权证由上市公司或券商发行；</p>
 <p class="body">持仓类型不同：期权投资者可以做卖方（卖出开仓），权证投资者只能做买方；</p>
 <p class="body">履约担保不同；</p>
-<p class="body">但两者都是标准化产品——这是它们的共同点。&lt;b&gt;（考点口径提示：实务中权证由上市公司或券商定制发行、条款各异，并非交易所标准化合约，标准化程度远低于期权；考试按"两者都是标准化产品"判对，请注意区分。）&lt;/b&gt;</p>
+<p class="body">但两者都是标准化产品——这是它们的共同点。<b>（考点口径提示：实务中权证由上市公司或券商定制发行、条款各异，并非交易所标准化合约，标准化程度远低于期权；考试按"两者都是标准化产品"判对，请注意区分。）</b></p>
 <h2>本章例题精讲</h2>
 <div class="example iq" id="ex1" data-qid="1">
 <div class="ex-tag">【例题1·题库第1题】</div>
@@ -584,6 +584,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>电路电流过大时保险丝会熔断，防止烧毁电器。期权价格盘中波动过大时，“断路器”会触发：暂停连续竞价，进入一段时间的集合竞价，让市场冷静后再恢复。</h3>
 <h3>断路器触发条件：盘中最新成交价格相对参考价格的涨跌幅度达到：</h3>
 <h3>max{ 50% × 参考价格，5 × 合约最小报价单位 }</h3>
+<p class="body">这个公式读作”两者取大”：分别算出”参考价的一半”和”5个最小报价单位”，谁大就用谁当触发线。价格高的合约走50%这条，波动一大就暂停冷静；价格很低的合约走5个最小报价单位这条兜底，防止波动几分钱就频繁熔断。</p>
 <h3>（对应题库第7题）</h3>
 <h2>2.3 行权与交割</h2>
 <p class="body">行权日与到期日：上交所期权到期日与行权日是同一天，为到期月份的第四个星期三（遇法定节假日顺延）。（题库第54、110题）</p>
@@ -593,13 +594,13 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">行权指令当日有效，当日可以撤销（注意：说”不可撤销”是错误的）；</p>
 <p class="body">行权日当天买入的期权，当天就可以行权；</p>
 <p class="body">可以多次申报行权，行权数量累计计算。</p>
-<p class="body">交割方式：上交所股票期权采用实物交割——认购期权行权时买方付钱收券、卖方收钱付券；认沽期权行权时买方付券收钱、卖方付钱收券
-<div class="practice"><h4>实务专栏 · 行权失败怎么办</h4><p>行权时若资金或证券不足，会导致行权失败或部分失败：认购行权需备足资金买券，认沽行权需备足证券。常见坑：① <b>忘记行权</b>——实值期权到期不行权，价值归零，白白损失内在价值；② <b>资金不足</b>——可提前平仓了结，或放弃行权（最多认亏权利金）；③ <b>交割后 T+1</b> 证券/资金才到账。对策：实值期权务必在到期前决定"行权还是平仓"。</p></div>。（题库第89题）</p>
+<p class="body">交割方式：上交所股票期权采用实物交割——认购期权行权时买方付钱收券、卖方收钱付券；认沽期权行权时买方付券收钱、卖方付钱收券。（题库第89题）</p>
+<div class="practice"><h4>实务专栏 · 行权失败怎么办</h4><p>行权时若资金或证券不足，会导致行权失败或部分失败：认购行权需备足资金买券，认沽行权需备足证券。常见坑：① <b>忘记行权</b>——实值期权到期不行权，价值归零，白白损失内在价值；② <b>资金不足</b>——可提前平仓了结，或放弃行权（最多认亏权利金）；③ <b>交割后 T+1</b> 证券/资金才到账。对策：实值期权务必在到期前决定"行权还是平仓"。</p></div>
 <h2>2.4 合约调整：除权除息后的”重新定价”</h2>
 <p class="body">生活化比喻：蛋糕切小块</p>
 <h3>一个蛋糕切成8块还是16块，蛋糕总量不变，只是每块的大小变了。标的证券送股、拆分时，“1张期权合约代表多少股”也要相应调整，保证合约代表的总价值不变。</h3>
 <h3>合约调整的主要原则：保持合约名义价值不变（题库第91题）。调整通常包括：</h3>
-<p class="body">现金分红（除息）：行权价下调，合约单位&lt;b&gt;小幅增加&lt;/b&gt;（为保持合约名义价值不变，除息后股价下跌，故合约单位相应上调）；</p>
+<p class="body">现金分红（除息）：行权价下调，合约单位<b>小幅增加</b>（为保持合约名义价值不变，除息后股价下跌，故合约单位相应上调）；</p>
 <p class="body">送股、转增（如10送10）：行权价下调，合约单位按比例增加；</p>
 <p class="body">拆分/并股：行权价与合约单位反向调整；</p>
 <p class="body">调整后的合约代码调整标志位由M变为A、B……（见第一章1.4节）。</p>
@@ -831,7 +832,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">第一步：写出平价公式 c + PV(K) = p + S；</p>
 <p class="body">第二步：代入 6 + 45 = p + 50；</p>
 <p class="body">第三步：解得 p = 1元。</p>
-<p class="body">推论（题库第81题）：c − p = S − PV(K)。利率越高，PV(K)越小，S − PV(K)越大，认购与认沽的价格差越大。</p>
+<p class="body">推论（题库第81题）：把上面的公式移项，就得到 c − p = S − PV(K)，意思是”认购比认沽贵多少，由现在的股价和行权价现值的差决定”。PV(K)就是把行权价那笔钱按利率折算到今天值多少——利率越高，折到现在就越少，于是认购相对认沽就越贵。推导不用背，记住方向就行：利率上升 → 认购变贵、认沽变便宜，两者价差拉大。</p>
 <h2>3.5 期权的杠杆效应</h2>
 <p class="body">生活化比喻：用定金撬动一套房</p>
 <h3>首付20万撬动200万的房子，房价涨10%（20万），你的本金就翻倍——这就是杠杆。</h3>
@@ -1032,8 +1033,8 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">时间价值衰减风险（越接近到期越不利）；</p>
 <p class="body">忘记行权风险（实值期权忘了行权就归零）；</p>
 <p class="body">流动性风险、交割风险、标的走势不利风险。</p>
-<p class="body">特别注意：买入期权没有保证金风险！买方付完权利金后无需再缴任何资金，“需要追加保证金”是卖方才会面临的情形
-<div class="practice"><h4>实务专栏 · 小心"僵尸合约"的流动性陷阱</h4><p>深度虚值、临近到期的期权成交量极小、买卖价差大，想平仓可能"有价无市"。实务建议：① 尽量交易平值附近的近月合约（流动性最好）；② 深度虚值期权"便宜"但多为废纸，买入前要清楚其归零概率；③ 下单时关注买卖价差，避免用市价单（价差大时容易买贵卖贱）。</p></div>。</p>
+<p class="body">特别注意：买入期权没有保证金风险！买方付完权利金后无需再缴任何资金，“需要追加保证金”是卖方才会面临的情形。</p>
+<div class="practice"><h4>实务专栏 · 小心"僵尸合约"的流动性陷阱</h4><p>深度虚值、临近到期的期权成交量极小、买卖价差大，想平仓可能"有价无市"。实务建议：① 尽量交易平值附近的近月合约（流动性最好）；② 深度虚值期权"便宜"但多为废纸，买入前要清楚其归零概率；③ 下单时关注买卖价差，避免用市价单（价差大时容易买贵卖贱）。</p></div>
 <h3>买入开仓的了结方式（题库第99、175题）：</h3>
 <p class="body">卖出平仓（中途转手给别人）；</p>
 <p class="body">行权（到期行使权利）；</p>
@@ -1207,9 +1208,9 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">买入现货（股票涨，现货盈利抵补期权亏损）；</p>
 <p class="body">买入认购期权（组成价差）；</p>
 <p class="body">建立期货多头。</p>
-<p class="body">不包括”卖出认沽”——卖出认沽也是怕跌的头寸，与卖出认购叠加会让风险更大（两者并非反向，无法相互对冲）。&lt;b&gt;提示：卖出认购＋卖出认沽的组合本身是"卖出跨式"（赌横盘）策略，但作为单腿对冲工具，卖出认沽无法对冲卖出认购的上涨风险。&lt;/b&gt;</p>
+<p class="body">不包括”卖出认沽”——卖出认沽也是怕跌的头寸，与卖出认购叠加会让风险更大（两者并非反向，无法相互对冲）。<b>提示：卖出认购＋卖出认沽的组合本身是"卖出跨式"（赌横盘）策略，但作为单腿对冲工具，卖出认沽无法对冲卖出认购的上涨风险。</b></p>
 <h2>5.3 卖出认沽期权：赌”不跌”</h2>
-<p class="body">适用场景（题库第32、73题）：预期标的不跌（横盘或上涨），赚取权利金。也常被用于”以心仪价格低位接货”。</p>
+<p class="body">适用场景（题库第32、73题）：预期标的不跌（横盘或上涨），赚取权利金。它还有一个常见用法叫”以心仪价格低位接货”：比如你想等某只股票跌到10元再买入，可以卖出一张行权价10元的认沽——真跌到10元以下，你就按10元履约买入（正中下怀）；一直没跌到，权利金就白赚了。</p>
 <h3>损益结构：</h3>
 <p class="body">最大收益：权利金（到期股价 ≥ 行权价时获得）；</p>
 <p class="body">最大亏损：行权价 − 权利金（股价跌到0元时达到最大，有限但巨大）；</p>
@@ -1233,7 +1234,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>房东怕你损坏家具跑路，先收一笔押金；房子越贵、家具越多，押金越高。保证金同理：你的义务越大（期权越实值、标的越不利），押金越高。</h3>
 <h3>保证金规则要点：</h3>
 <p class="body">只有义务方（卖方）缴纳保证金，买方不缴（题库第55、103题）；</p>
-<p class="body">每日日终收取的是维持保证金（题库第75题）；</p>
+<p class="body">每日日终收取的是维持保证金——每天收盘后按当天的风险重新算一遍”押金”（题库第75题）；</p>
 <p class="body">实值期权的保证金 &gt; 平值 &gt; 虚值（义务越大押金越高；题库第194题）；</p>
 <p class="body">标的上涨 → 认购义务方保证金增加（题库第165题）；</p>
 <p class="body">标的下跌 → 认沽义务方保证金增加（题库第34题）；</p>
@@ -1434,7 +1435,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>易错点：备兑策略只涉及认购期权，所有”增加/减少认沽备兑持仓”的选项都是干扰项。</h3>
 <h2>6.3 合约调整对备兑持仓的影响</h2>
 <p class="body">标的证券除权除息时，合约会调整（见第二章），备兑持仓受影响如下：</p>
-<p class="body">现金分红（题库第115题）：行权价下调、合约单位相应增加，好让合约整体的名义价值保持不变。合约单位一变多，原来那点股票就不够担保了 → 备兑证券不足；</p>
+<p class="body">现金分红（题库第115题）：分红后股价会相应下跌，为了让”一张合约代表的总价值”不变，交易所会下调行权价、同时把合约单位调大。合约单位一变大，每张备兑合约需要的担保股票就变多了——你手里原有的股票就不够担保了 → 备兑证券不足；</p>
 <p class="body">备兑不足的处理（题库第15、96题）：合约调整当日应当补足证券或自行平仓；否则将被强行平仓；</p>
 <p class="body">送股（如10送10）（题库第173题）：持股数量同比例增加，自动补足 → 没有影响；</p>
 <p class="body">ETF份额拆分（如1拆2）（题库第155题）：持有份额同比例增加 → 没有影响。</p>
@@ -1466,11 +1467,11 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">股价下跌时的保护效果（题库第184题）：</p>
 <p class="lead">持股成本40元，买入行权价42元的认沽，付权利金3元/股，到期股价39元。</p>
 <p class="body">第一步：39 &lt; 42，行权，按42元卖出；</p>
-<p class="body">第二步：每股盈亏 = (42 − 40) − 3 = −1元（若没有保险，亏40−39=1元之外还会继续放大；保险锁定了42元的卖出价）。</p>
+<p class="body">第二步：每股盈亏 = (42 − 40) − 3 = −1元（如果没有保险，股价39元时已经亏1元，而且跌得越多亏得越多；有了保险，42元的卖出价被锁定，亏损到此为止）。</p>
 <p class="body">特殊场景应用（题库第140、144题）：</p>
 <p class="body">股票被质押无法卖出、又担心下跌 → 保险策略（买认沽）；</p>
-<p class="body">想长期持股但规避价格风险
-<div class="practice"><h4>实务专栏 · 期权与正股/打新的协同</h4><p>期权常与正股/ETF 组合使用：① <b>备兑增强</b>——长期持有的股票/ETF 上卖认购收权利金，摊薄成本（注意上行被封顶）；② <b>打新底仓保护</b>——用打新底仓配保险策略（买认沽）对冲大盘下跌，保住打新市值；③ <b>持有中做波动</b>——横盘期卖跨式/价差增收。核心：先有"正股/持仓"这个锚，再用期权做增收或保护。</p></div> → 买入认沽期权。</p>
+<p class="body">想长期持股但规避价格风险 → 买入认沽期权。</p>
+<div class="practice"><h4>实务专栏 · 期权与正股/打新的协同</h4><p>期权常与正股/ETF 组合使用：① <b>备兑增强</b>——长期持有的股票/ETF 上卖认购收权利金，摊薄成本（注意上行被封顶）；② <b>打新底仓保护</b>——用打新底仓配保险策略（买认沽）对冲大盘下跌，保住打新市值；③ <b>持有中做波动</b>——横盘期卖跨式/价差增收。核心：先有"正股/持仓"这个锚，再用期权做增收或保护。</p></div>
 <h2>本章例题精讲</h2>
 <div class="example iq" id="ex14" data-qid="14">
 <div class="ex-tag">【例题1·题库第14题】</div>
@@ -1649,7 +1650,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <h3>合成股票多头（题库第44题）：买入认购 + 卖出认沽（同行权价、同到期日、同标的）。</h3>
 <p class="body">股价上涨：认购赚钱、认沽作废 → 像持股一样赚；</p>
 <p class="body">股价下跌：认沽被行权亏损 → 像持股一样亏；</p>
-<p class="body">风险收益特征：股价能一路向上涨，收益就没有上限；股价最多跌到 0，亏损也就没有下限。涨跌空间都跟直接持股一样大，所以按题库口径称为”风险无限、收益无限”（题库第83题）。</p>
+<p class="body">风险收益特征：股价上涨没有天花板，收益也就没有上限；股价下跌时会一路亏到股价归零——不像买入认购那样最多只亏权利金。它的涨跌空间和直接持股一样大，所以题库把它归入”风险无限、收益无限”一类（题库第83题）。</p>
 <p class="body">合成股票空头（题库第108题）：卖出认购 + 买入认沽（方向全反过来）。</p>
 <h3>合成条件（题库第203题）：同行权价、同到期日、同标的——不要求权利金相同。</h3>
 <h3>合成多头盈亏计算（分步演示，题库第45题）：</h3>
@@ -1672,8 +1673,8 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">优点：两份都是虚值期权，成本更低；</p>
 <p class="body">缺点：需要更大的波动才能获利。</p>
 <figure class="chart"><svg viewBox="0 0 660 380" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"><title>买入跨式 vs 买入勒式（到期损益）</title><text x="56" y="26" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">买入跨式 vs 买入勒式（到期损益）</text><line x1="56" y1="260.5" x2="610" y2="260.5" stroke="#888780" stroke-width="1" stroke-dasharray="4,4"/><line x1="56" y1="40" x2="56" y2="334" stroke="#D3D1C7" stroke-width="1"/><line x1="56" y1="334" x2="610" y2="334" stroke="#D3D1C7" stroke-width="1"/><text x="56.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="50" y="44.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">45.0</text><text x="194.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">20.0</text><text x="50" y="117.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">30.0</text><text x="333.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">40.0</text><text x="50" y="191.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">15.0</text><text x="471.5" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">60.0</text><text x="50" y="264.5" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">0.0</text><text x="610.0" y="350" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">80.0</text><text x="50" y="338.0" text-anchor="end" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#5F5E5A">-15.0</text><path d="M 56.0,64.5 L 333.0,260.5 L 402.25,309.5 L 471.5,260.5 L 610.0,162.5" fill="none" stroke="#378ADD" stroke-width="2"/><text x="608" y="158.5" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#378ADD">买入跨式</text><path d="M 56.0,113.5 L 298.375,270.3 L 402.25,289.9 L 506.125,270.3 L 610.0,172.3" fill="none" stroke="#7F77DD" stroke-width="2" stroke-dasharray="6,4"/><text x="608" y="168.3" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#7F77DD">买入勒式</text><circle cx="333.0" cy="260.5" r="4" fill="#EF9F27"/><text x="333.0" y="250.5" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 40</text><circle cx="471.5" cy="260.5" r="4" fill="#EF9F27"/><text x="471.5" y="250.5" text-anchor="middle" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="500" fill="#2C2C2A">平衡 60</text><text x="60" y="250" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#639922">大涨或大跌才获利；横盘亏损（亏两份权利金）</text><text x="300" y="50" text-anchor="start" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="11" font-weight="400" fill="#7F77DD">勒式成本更低，但需要更大波动</text></svg><figcaption>跨式与勒式损益对比</figcaption></figure>
-<h3>卖出跨式（题库第200题）：预期股价小幅波动/横盘时，同时卖出认购和认沽，赚两份权利金——但大涨大跌时亏损可能巨大，是高手的游戏
-<div class="practice"><h4>实务专栏 · 卖出组合的保证金占用</h4><p>卖出开仓（尤其卖出跨式、价差等组合）需要占用保证金。组合策略通常比"两条腿分别计算再相加"更省保证金（交易所允许组合冲销部分风险）。要点：① 义务仓越实值、越临近到期、标的风险越大，保证金越高；② 保证金每日动态调整（逐日盯市），不足会被要求追加，否则强平；③ 备兑开仓以足额证券担保，可免缴额外保证金。</p></div>。</h3>
+<h3>卖出跨式（题库第200题）：预期股价小幅波动/横盘时，同时卖出认购和认沽，赚两份权利金——但大涨大跌时亏损可能巨大，是高手的游戏。</h3>
+<div class="practice"><h4>实务专栏 · 卖出组合的保证金占用</h4><p>卖出开仓（尤其卖出跨式、价差等组合）需要占用保证金。组合策略通常比"两条腿分别计算再相加"更省保证金（交易所允许组合冲销部分风险）。要点：① 义务仓越实值、越临近到期、标的风险越大，保证金越高；② 保证金每日动态调整（逐日盯市），不足会被要求追加，否则强平；③ 备兑开仓以足额证券担保，可免缴额外保证金。</p></div>
 <h2>本章例题精讲</h2>
 <div class="example iq" id="ex46" data-qid="46">
 <div class="ex-tag">【例题1·题库第46题】</div>
@@ -1828,7 +1829,7 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <tr><td>强行平仓</td><td>违规后的强制措施</td><td>物业强制清退：屡次违规就强制搬离</td></tr>
 </table></div>
 <h2>8.2 限仓制度：限制你能持有多少</h2>
-<p class="body">定义（题库第18、61、156题）：限仓制度规定投资者对某一标的的全部合约，最多能持有多大——具体管两项上限：</p>
+<p class="body">定义（题库第18、61、156题）：限仓制度规定：对同一只标的的所有期权合约，你最多能持有多少张——具体管两个上限：</p>
 <p class="body">权利仓持仓最大数量；</p>
 <p class="body">总持仓最大数量（权利仓+义务仓）。</p>
 <p class="body">要点：</p>
@@ -1867,8 +1868,8 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <tr><td>二级</td><td>一级权限 + 买入开仓</td></tr>
 <tr><td>三级</td><td>二级权限 + 卖出开仓（义务仓）</td></tr>
 </table></div>
-<h3>级别越高，可承担的风险类型越多。开通权限前必须通过相应级别的知识测试——这正是你正在准备的事情
-<div class="practice"><h4>实务专栏 · 开通期权的门槛</h4><p>开通上交所股票期权权限，个人投资者通常需：① 申请前 20 个交易日日均证券资产不低于 <b>50 万元</b>；② 开户并交易满 6 个月，具备融资融券或金融期货经历；③ 通过交易所期权知识测试（分一、二、三级，逐级通过）；④ 具备模拟交易经历；⑤ 无不良诚信记录。具体以券商与交易所最新规定为准。此门槛与本书知识测试内容相互独立。</p></div>。</h3>
+<h3>级别越高，可承担的风险类型越多。开通权限前必须通过相应级别的知识测试——这正是你正在准备的事情。</h3>
+<div class="practice"><h4>实务专栏 · 开通期权的门槛</h4><p>开通上交所股票期权权限，个人投资者通常需：① 申请前 20 个交易日日均证券资产不低于 <b>50 万元</b>；② 开户并交易满 6 个月，具备融资融券或金融期货经历；③ 通过交易所期权知识测试（分一、二、三级，逐级通过）；④ 具备模拟交易经历；⑤ 无不良诚信记录。具体以券商与交易所最新规定为准。此门槛与本书知识测试内容相互独立。</p></div>
 <h2>本章例题精讲</h2>
 <div class="example iq" id="ex18" data-qid="18">
 <div class="ex-tag">【例题1·题库第18题】</div>
@@ -2024,8 +2025,8 @@ section.chapter{scroll-margin-top:calc(var(--hh,64px) + 12px)}
 <p class="body">遇到策略选择题先判断市场预期（涨/跌/不涨/不跌/大波动/小波动），再对照策略速查表；</p>
 <p class="body">“张数计算”一律向下取整；</p>
 <p class="body">到期价=行权价时，期权作废：买方亏光权利金，卖方净赚权利金。</p>
-<p class="body">祝考试顺利
-<div class="practice"><h4>实务专栏 · 期权交易成本一览</h4><p>上交所期权主要费用（供参考，以券商为准）：① <b>交易佣金</b>（券商，买卖双向）；② <b>经手费</b>（交易所，按张）；③ <b>结算费</b>（中国结算）；④ 行权/结算时可能产生过户费、印花税（个股行权过户费；ETF 通常免印花税）。期权按"张"收费，单张费用较低，但高频交易时仍需关注。</p></div>，早日开通权限！最后提醒一句：通过考试只是拿到入场券，真正的本领得在真金白银之前练出来——先用模拟盘把每种策略都走一遍，再上实盘，才能少交学费。</p>
+<p class="body">祝考试顺利，早日开通权限！最后提醒一句：通过考试只是拿到入场券，真正的本领得在真金白银之前练出来——先用模拟盘把每种策略都走一遍，再上实盘，才能少交学费。</p>
+<div class="practice"><h4>实务专栏 · 期权交易成本一览</h4><p>上交所期权主要费用（供参考，以券商为准）：① <b>交易佣金</b>（券商，买卖双向）；② <b>经手费</b>（交易所，按张）；③ <b>结算费</b>（中国结算）；④ 行权/结算时可能产生过户费、印花税（个股行权过户费；ETF 通常免印花税）。期权按"张"收费，单张费用较低，但高频交易时仍需关注。</p></div>
 <div class="table-wrap"><table>
 <tr><th>题号</th><th>答案</th><th>所属章节</th><th>考点</th></tr>
 <tr><td>1</td><td>C</td><td>第一章 期权基础知识</td><td>买方权利义务</td></tr>
